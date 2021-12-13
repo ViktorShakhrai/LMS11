@@ -36,17 +36,30 @@ CHANNELS = ["BBC", "Discovery", "TV1000"]
 
 
 class TVController:
-    def first_channel(self):
-        pass
+    def __init__(self, channels: list):
+        self.channels = channels
+        self.active_channel = channels[0]
 
-    def last_channel(self):
-        pass
+    def first_channel(self) -> str:
+        """Вмикає перший канал зі списку"""
+        print(self.channels[0])
 
-    def turn_channel(self):
-        pass
+    def last_channel(self) -> str:
+        """Вмикає останній канал зі списку"""
+        print(self.channels[-1])
 
-    def next_channel(self):
-        pass
+    def turn_channel(self, what_turn: int) -> str:
+        """Вмикає N канал"""
+        self.active_channel = self.channels[what_turn - 1]
+        print(self.active_channel)
+
+    def next_channel(self) -> str:
+        """Вмикає наступний канал. Якщо поточний канал останній, вмикається перший канал"""
+        if self.active_channel != self.channels[-1]:
+            self.active_channel = self.channels[0]
+            print(self.active_channel)
+        self.active_channel = self.channels[self.channels.index(self.active_channel) + 1]
+        print(self.active_channel)
 
     def previous_channel(self):
         pass
@@ -56,3 +69,9 @@ class TVController:
 
     def is_exist(self, name):
         pass
+
+controller = TVController(CHANNELS)
+controller.first_channel()
+controller.last_channel()
+controller.turn_channel(1)
+controller.next_channel()
