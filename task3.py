@@ -42,36 +42,51 @@ class TVController:
 
     def first_channel(self) -> str:
         """Вмикає перший канал зі списку"""
+        self.active_channel = self.channels[0]
         print(self.channels[0])
 
     def last_channel(self) -> str:
         """Вмикає останній канал зі списку"""
+        self.active_channel = self.channels[-1]
         print(self.channels[-1])
 
     def turn_channel(self, what_turn: int) -> str:
         """Вмикає N канал"""
-        self.active_channel = self.channels[what_turn - 1]
-        print(self.active_channel)
+        try:
+            self.active_channel = self.channels[what_turn - 1]
+            print(self.active_channel)
+        except IndexError:
+            pass
 
     def next_channel(self) -> str:
         """Вмикає наступний канал. Якщо поточний канал останній, вмикається перший канал"""
-        if self.active_channel != self.channels[-1]:
+        if self.active_channel == self.channels[-1]:
             self.active_channel = self.channels[0]
             print(self.active_channel)
         self.active_channel = self.channels[self.channels.index(self.active_channel) + 1]
         print(self.active_channel)
 
-    def previous_channel(self):
-        pass
+    def previous_channel(self) -> str:
+        """Вмикає попередній канал. Якщо поточний канал є першим, вмикається останній канал"""
+        if self.active_channel == self.channels[0]:
+            self.active_channel = self.channels[-1]
+        self.active_channel = self.channels[self.channels.index(self.active_channel) - 1]
+        print(self.active_channel)
 
     def current_channel(self):
-        pass
+        """Повертає назву поточного каналу"""
+        print(self.active_channel)
 
     def is_exist(self, name):
-        pass
+        for i in self.channels:
+            pass
+
 
 controller = TVController(CHANNELS)
 controller.first_channel()
 controller.last_channel()
-controller.turn_channel(1)
+controller.turn_channel(8)
 controller.next_channel()
+controller.previous_channel()
+controller.is_exist(4)
+controller.is_exist("BBC")
