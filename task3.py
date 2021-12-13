@@ -11,7 +11,6 @@
 # Канал за замовчуванням увімкнено перед усіма командами – №1.
 # Ваше завдання — створити клас і методи TVController, описані вище.
 # CHANNELS = ["BBC", "Discovery", "TV1000"]
-#
 #  class TVController:
 #
 # pass
@@ -33,3 +32,27 @@
 # controller.is_exist(4) == "No"
 #
 # controller.is_exist("BBC") == "Yes"
+CHANNELS = ["BBC", "Discovery", "TV1000"]
+
+
+class TVController:
+    def first_channel(self):
+        pass
+
+    def last_channel(self):
+        pass
+
+    def turn_channel(self):
+        pass
+
+    def next_channel(self):
+        pass
+
+    def previous_channel(self):
+        pass
+
+    def current_channel(self):
+        pass
+
+    def is_exist(self, name):
+        pass
